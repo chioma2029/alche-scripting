@@ -4,7 +4,8 @@ import requests
 
 
 def top_ten(subreddit):
-    """Print the titles of the first 10 hot posts for a subreddit."""			   url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
+    """Print the titles of the first 10 hot posts for a subreddit."""
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {"User-Agent": "my-app/0.1"}
     response = requests.get(url, headers=headers, allow_redirects=False)
 
@@ -15,4 +16,4 @@ def top_ten(subreddit):
     data = response.json()
     posts = data.get("data").get("children")
     for post in posts:
-	print(post.get("data").get("title"))                
+        print(post.get("data").get("title"))
